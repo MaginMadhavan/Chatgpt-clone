@@ -6,6 +6,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./Routes/authRoute.js";
+import errorHandler from "./Middleware/errorMiddleware.js";
 
 //dotenv
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 8080;
 
