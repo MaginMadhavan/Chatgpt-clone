@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-import JWT from "jasonwebtoken";
+import JWT from "jsonwebtoken";
 import cookie from "cookie";
 //model
 export const userSchema = new mongoose.Schema({
@@ -10,16 +10,17 @@ export const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Password is required"],
     minlength: 6,
-  },
-  validate: {
-    validator: function (v) {
-      return /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
-        v
-      );
+    validate: {
+      validator: function (v) {
+        return /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+          v
+        );
+      },
+      message: (props) =>
+        `${props.value} is not a valid password! It must contain at least 8 characters, including one uppercase letter, one number, and one special character.`,
     },
-    message: (props) =>
-      `${props.value} is not a valid password! It must contain at least 8 characters, including one uppercase letter, one number, and one special character.`,
   },
+
   customerId: {
     type: String,
     default: "",
