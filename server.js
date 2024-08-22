@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
+import authRoutes from "./Routes/authRoute.js";
 
 //dotenv
 dotenv.config();
@@ -22,6 +23,9 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
+
+//routes
+app.use("/api/v1/auth", authRoutes);
 
 //listen server
 app.listen(PORT, () => {
