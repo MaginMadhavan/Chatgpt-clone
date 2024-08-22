@@ -4,9 +4,13 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
+import connectDB from "./config/db.js";
 
 //dotenv
 dotenv.config();
+
+//mongo connection
+connectDB();
 
 //rest Object
 const app = express();
