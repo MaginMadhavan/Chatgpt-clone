@@ -10,7 +10,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 
 function App() {
-  const theme = useMemo(() => createTheme(themeSettings(), []));
+  const theme = useMemo(() => createTheme(themeSettings()), []);
   return (
     <>
       <ThemeProvider theme={theme}>
