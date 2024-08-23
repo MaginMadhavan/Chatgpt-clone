@@ -8,14 +8,19 @@ import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 function App() {
   const theme = useMemo(() => createTheme(themeSettings()), []);
+  axios.defaults.baseURL = `http://localhost:8080`;
+
   return (
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Navbar />
+        <Toaster />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
